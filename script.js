@@ -47,6 +47,41 @@ async function checkWeather(city){
    // humidity.textContent = weather_data.weather[0].main
 }
 
+async function defaultWeather(latitude,longitude)
+{
+    const url = `http://api.weatherapi.com/v1/current.json?key=d4327b442bd74e8185b45518232111&q=${latitude},${longitude}&aqi=yes`;
+    let w_data = fetch(url).then(responce=>responce.json())
+    console.log(w_data)
+    return w_data
+
+}
+
+async function gotLocation(position){
+    
+    let weatherdata = await defaultWeather(position.coords.latitude,position.coords.longitude)
+    locationInput.value=""
+    data.style.cssText = "visibility:visible"  
+    Error_prompt.style.cssText = "visibility:hidden" 
+    temprature.textContent = weatherdata.current.temp_c+`°C`;
+    cloud.textContent = weatherdata.current.condition.text;
+    City.textContent = weatherdata.location.name;
+    humidity.textContent = weatherdata.current.humidity
+    wind_speed.textContent = weatherdata.current.wind_mph +"mph"
+    
+    
+}
+
+function failedLocation(){
+    
+    Error_prompt.textContent = "Location is not Valid"
+    Error_prompt.style.cssText = "color:white"
+    data.style.cssText = "visibility:hidden"
+}
+
+your_location.addEventListener('click',()=>{
+    const weatherLocation = navigator.geolocation.getCurrentPosition(gotLocation,failedLocation)
+})
+
 search.addEventListener('click',()=>{
     checkWeather(locationInput.value)
 })
