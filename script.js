@@ -49,7 +49,8 @@ async function checkWeather(city){
 
 async function defaultWeather(latitude,longitude)
 {
-    const url = `http://api.weatherapi.com/v1/current.json?key=d4327b442bd74e8185b45518232111&q=${latitude},${longitude}&aqi=yes`;
+    const api_key = "186a9e5c9550b150104da99fc4bf6b06";
+    const url =` https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`
     let w_data = fetch(url).then(responce=>responce.json())
     console.log(w_data)
     return w_data
@@ -62,13 +63,11 @@ async function gotLocation(position){
     locationInput.value=""
     data.style.cssText = "visibility:visible"  
     Error_prompt.style.cssText = "visibility:hidden" 
-    temprature.textContent = weatherdata.current.temp_c+`°C`;
-    cloud.textContent = weatherdata.current.condition.text;
-    City.textContent = weatherdata.location.name;
-    humidity.textContent = weatherdata.current.humidity
-    wind_speed.textContent = weatherdata.current.wind_mph +"mph"
-    
-    
+    temprature.textContent = Math.floor(weatherdata.main.temp - 273)+`°C`;
+    cloud.textContent = weatherdata.weather[0].description;
+    City.textContent = weatherdata.name;
+    humidity.textContent = weatherdata.main.humidity
+    wind_speed.textContent = weatherdata.wind.speed +"mph"
 }
 
 function failedLocation(){
@@ -79,7 +78,7 @@ function failedLocation(){
 }
 
 your_location.addEventListener('click',()=>{
-    const weatherLocation = navigator.geolocation.getCurrentPosition(gotLocation,failedLocation)
+    navigator.geolocation.getCurrentPosition(gotLocation,failedLocation)
 })
 
 search.addEventListener('click',()=>{
