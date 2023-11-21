@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- <link rel="stylesheet" href="input.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-slate-500 h-screen items-center flex flex-col justify-center">
+    <header class="bg-red-600 shadow-lg text-white rounded-lg flex items-center justify-center relative top-2 w-[60%] h-[10%]">
+        <h1 class="font-bold text-3xl ">Weather App</h1>
+    </header>
+    <div class="main shadow-lg flex flex-col justify-center items-center w-full h-screen">
+        <div class="w-[60%] h-[90%] bg-red-400 px-[1rem] py-4 relative">
+            <input id="location" type="text" placeholder="Enter Valid City" class="border-none w-[100%] rounded-lg outline-none px-3 py-1">
+            <i id="search" class="fa-solid fa-magnifying-glass absolute right-5 top-6 cursor-pointer"></i>
+            <div class="w-[100%] flex justify-center my-2 "><button id="your_location" class="bg-green-400 hover:bg-green-500 px-2 py-0.5 rounded-lg" type="button">your location</button></div>
+            <div class="bg-red-600 justify-center items-center flex flex-col gap-8 px-2 h-[80%]">
+                <h1 id="ERROR"></h1>
+                <div id="data" class="bg-red-600 flex flex-col gap-5 justify-center  px-2 h-[80%]">
+                    <div class="bg-blue-600  items-center flex gap-3 px-2 text-white text-2xl">
+                        <h1>City : </h1>
+                        <h1 id="city">Haridwar</h1>
+                    </div>
+                    <div class="bg-blue-600  items-center flex gap-3 px-2 text-white text-2xl">
+                        <h1>Temprature :</h1>
+                        <h1 id="temp">20°C</h1>
+                    </div>
+                    <div class="bg-blue-600  items-center flex gap-3 px-2 text-white text-2xl">
+                        <h1>Cloud : </h1>
+                        <h1 id="cloud">Sunny</h1>
+                    </div>
+                    <div class="bg-blue-600  items-center flex gap-3 px-2 text-white text-2xl">
+                        <h1>Humidity : </h1>
+                        <h1 id="humidity">24</h1>
+                    </div>
+                    <div class="bg-blue-600  items-center flex gap-3 px-2 text-white text-2xl">
+                        <h1>wind : </h1>
+                        <h1 id="wind">23mph</h1>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
