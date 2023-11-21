@@ -72,7 +72,7 @@ async function gotLocation(position){
 }
 
 function failedLocation(){
-    
+    locationInput.value=""
     Error_prompt.textContent = "Location is not Valid"
     Error_prompt.style.cssText = "color:white"
     data.style.cssText = "visibility:hidden"
